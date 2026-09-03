@@ -52,7 +52,14 @@ class Etudiant {
                    valeur du tableau est comprise entre 0 et 20. Puis elle retourne à la fin ce tableau en attribut.
      */
     public double[] getNotes(int nbnotes) {
-
+        this.notes = new double[nbNotes];
+            for (int i = 0; i < nbnotes; i++) {
+                do {
+                    System.out.print("Entrez la note " + (i + 1) + " de l'étudiant : ");
+                    this.notes[i] = sc.nextDouble();
+                } while (this.notes[i] < 0 || this.notes[i] > 20);
+            }
+        return this.notes;
     }
 
     /*
