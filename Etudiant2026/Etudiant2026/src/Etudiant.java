@@ -53,15 +53,21 @@ class Etudiant {
         /*
          Afficher le nom en attribut dans le message suivant
          */
-
+            System.out.println("Nom : " + this.nom);
         /*
          Afficher l'age en attribut dans le message suivant
          */
+            System.out.println("Age : " + this.age);
 
         /*
          Afficher les valeurs du tableau notes en attribut dans le message suivant
          */
-
+            System.out.print("Notes : ");
+            for (int i = 0; i < this.nbnotes; i++) {
+                System.out.print(this.notes[i] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
