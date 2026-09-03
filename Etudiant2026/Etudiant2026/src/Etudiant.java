@@ -24,7 +24,12 @@ class Etudiant {
                    entre 0 et 99, puis retourne cet attribut.
      */
     public int getAge() {
-
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.print("Entrez l'âge de l'étudiant : ");
+            this.age = sc.nextInt();
+        } while (this.age < 0 || this.age > 25);
+        return this.age;
     }
 
     /*
