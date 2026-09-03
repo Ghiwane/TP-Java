@@ -11,13 +11,12 @@ class Etudiant {
     /*
      A COMPLETER : Méthode qui saisit la valeur de l'attribut nom et retourne cet attribut.
      */
+
     public String getNom() {
-        public String getNom() {
             Scanner sc = new Scanner(System.in) ;
             System.out.print("Entrez le nom de l'étudiant :") ;
             this.nom = sc.nextLine();
             return this.nom;
-
     }
 
     /*
@@ -25,7 +24,12 @@ class Etudiant {
                    entre 0 et 99, puis retourne cet attribut.
      */
     public int getAge() {
-
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.print("Entrez l'âge de l'étudiant : ");
+            this.age = sc.nextInt();
+        } while (this.age < 0 || this.age > 25);
+        return this.age;
     }
 
     /*
@@ -34,7 +38,12 @@ class Etudiant {
                    attribut.
      */
     public int getNbnotes() {
-
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.print("Entrez le nombre de notes de l'étudiant : ");
+            this.nbnotes = sc.nextInt();
+        } while (this.nbnotes < 1 || this.nbnotes > 4);
+        return this.nbnotes;
     }
 
     /*
