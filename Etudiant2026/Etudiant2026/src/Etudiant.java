@@ -38,7 +38,12 @@ class Etudiant {
                    attribut.
      */
     public int getNbnotes() {
-
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.print("Entrez le nombre de notes de l'étudiant : ");
+            this.nbnotes = sc.nextInt();
+        } while (this.nbnotes < 1 || this.nbnotes > 4);
+        return this.nbnotes;
     }
 
     /*
