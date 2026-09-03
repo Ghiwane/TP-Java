@@ -52,7 +52,8 @@ class Etudiant {
                    valeur du tableau est comprise entre 0 et 20. Puis elle retourne à la fin ce tableau en attribut.
      */
     public double[] getNotes(int nbnotes) {
-        this.notes = new double[nbNotes];
+        Scanner sc = new Scanner(System.in);
+        this.notes = new double[nbnotes];
             for (int i = 0; i < nbnotes; i++) {
                 do {
                     System.out.print("Entrez la note " + (i + 1) + " de l'étudiant : ");
@@ -83,7 +84,6 @@ class Etudiant {
                 System.out.print(this.notes[i] + " ");
             }
             System.out.println();
-        }
     }
 
     /*
@@ -93,10 +93,16 @@ class Etudiant {
         /*
           Définir et initialiser la somme du tableau notes en attribut a 0
          */
+        double somme = 0;
 
         /*
           Calculer la somme du tableau notes en attribut
          */
+        for (int i = 0; i < this.nbnotes; i++) {
+            somme += this.notes[i];
+        }
+
+        return somme / this.nbnotes;
 
         /*
           Retouner la moyenne du tableau notes en attribut
