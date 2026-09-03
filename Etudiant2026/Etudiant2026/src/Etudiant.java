@@ -11,13 +11,12 @@ class Etudiant {
     /*
      A COMPLETER : Méthode qui saisit la valeur de l'attribut nom et retourne cet attribut.
      */
+
     public String getNom() {
-        public String getNom() {
             Scanner sc = new Scanner(System.in) ;
             System.out.print("Entrez le nom de l'étudiant :") ;
             this.nom = sc.nextLine();
             return this.nom;
-
     }
 
     /*
