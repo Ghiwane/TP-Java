@@ -10,44 +10,44 @@ public class Main {
         /*
           A COMPLETER : définir et instancier un objet de la classe Etudiant sans parametre
          */
-
+        Etudiant etudiant = new Etudiant();
 
         /*
             A COMPLETER : Appeler la methode getNom() de l'objet instancie ci-dessus de la classe Etudiant, pour
                           recuperer la variable nom saisie dans cette méthode pour cet objet.
          */
-
+        nom = etudiant.getNom();
 
          /*
             A COMPLETER : Appeler la methode getAge() de l'objet instancie ci-dessus de la classe Etudiant, pour
                           recuperer la variable age saisie dans cette méthode pour cet objet.
          */
-
+        age = etudiant.getAge();
 
          /*
             A COMPLETER : Appeler la methode getNbnotes() de l'objet instancie ci-dessus de la classe Etudiant, pour
                           recuperer la variable nbnotes saisie dans cette méthode pour cet objet.
          */
-
+        nbnotes = etudiant.getNbnotes();
 
          /*
             A COMPLETER : Appeler la methode getNotes(int nbnotes) de l'objet instancie ci-dessus de la classe Etudiant,
                           pour recuperer la variable du tableau notes, dont les valeurs sont saisies dans cette méthode
                           pour cet objet, en fonction du nombre de notes nbnotes précédent en paramètre.
          */
-
+        notes = etudiant.getNotes(nbnotes);
 
         /*
             A COMPLETER : Appeler la methode afficherInfos() de l'objet instancie ci-dessus de la classe Etudiant, pour
                           afficher les informations de cet objet.
          */
-
+        etudiant.afficherInfos();
 
         /*
             A COMPLETER : Appeler la methode calculerMoyenne() de l'objet instancie ci-dessus de la classe Etudiant,
                           pour calculer la moyenne du tableau de notes de cet objet. Puis afficher cette moyennne.
          */
-
+        System.out.println(etudiant.calculerMoyenne());
 
     }
 }
