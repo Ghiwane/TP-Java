@@ -1,6 +1,8 @@
+package TP1;
+
 import java.util.Scanner;
 
-// Classe Etudiant
+// Classe TP1.Etudiant
 class Etudiant {
     // Tous les attributs ci-dessous sont private et donc pas accessibles directement dans une autre classe
     private String nom; // nom de l'etudiant
