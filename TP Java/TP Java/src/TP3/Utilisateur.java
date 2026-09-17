@@ -44,8 +44,13 @@ public class Utilisateur {
         System.out.println("Vous êtes bien déconnecté du compte " + getPseudo() + ".");
     }
 
-    public void rechercherJeu(String motCle) {
-        
+    public void rechercherJeu() {
+        String str;
+        do {
+            System.out.print("Saisir recherche : ");
+            str = scanner.nextLine();
+            if (Objects.equals(str, "")) System.out.println("Veuillez saisir une recherche.");
+        } while (Objects.equals(str, ""));
     }
 
 
