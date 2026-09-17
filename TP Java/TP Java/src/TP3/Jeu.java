@@ -7,7 +7,7 @@ public class Jeu {
     private boolean verif;
     private int index;
 
-    public void Jeu(String titre, double prix, String genre)
+    public Jeu(String titre, double prix, String genre)
     {
         this.titre = titre;
         this.prix = prix;

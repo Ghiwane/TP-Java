@@ -6,7 +6,7 @@ public class Dev extends Utilisateur {
     private String nomStudio;
     private String specialite;
     private int nbJeuPublie;
-    private static List<Jeu> jeuxPublies;
+    private static List<Jeu> jeuxPublies = new ArrayList<>();
 
     public Dev(String pseudo, String email, String mdp, String nomStudio, String specialite, int nbJeuPublie)
     {
@@ -14,13 +14,12 @@ public class Dev extends Utilisateur {
         this.nomStudio = nomStudio;
         this.specialite = specialite;
         this.nbJeuPublie = nbJeuPublie;
-        jeuxPublies = new ArrayList<>();
     }
 
     public void publierJeu(Jeu jeu)
     {
+        jeu.setIndex(jeuxPublies.size());
         jeuxPublies.add(jeu);
-        jeu.setIndex(nbJeuPublie);
         nbJeuPublie++;
     }
 
