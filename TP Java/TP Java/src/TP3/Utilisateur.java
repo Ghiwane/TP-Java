@@ -8,6 +8,10 @@ public class Utilisateur {
 
     Scanner scanner = new Scanner(System.in);
 
+    public Utilisateur() {
+        this("null", "null", "null");
+    }
+
     public Utilisateur(String pseudo, String email, String mdp) {
         this.pseudo = pseudo; this.email = email; this.mdp = mdp;
     }
