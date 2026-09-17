@@ -35,4 +35,19 @@ public class Jeu {
             System.out.println("Le jeu n'est pas disponible");
         }
     }
+    public String getTitre()
+    {
+        return titre;
+    }
+
+    public String getGenre()
+    {
+        return genre;
+    }
+
+    public double getPrix()
+    {
+        return prix;
+    }
+
 }
