@@ -55,6 +55,11 @@ public class Utilisateur {
             str = scanner.nextLine();
             if (Objects.equals(str, "")) System.out.println("Veuillez saisir une recherche.");
         } while (Objects.equals(str, ""));
+        for (int i = 0; i < Dev.getJeuxPublies().size(); i++) {
+            Jeu j = Dev.getJeuxPublies().get(i);
+            if (j.getVerif() && j.getTitre().toLowerCase().contains(str.toLowerCase()))
+                System.out.println(j);
+        }
     }
 
 
