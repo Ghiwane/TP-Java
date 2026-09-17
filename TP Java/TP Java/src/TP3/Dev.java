@@ -23,17 +23,10 @@ public class Dev extends Utilisateur {
         nbJeuPublie++;
     }
 
-    public static List<Jeu> getJeuxPublies()
-    {
-        return jeuxPublies;
-    }
+    public void publierAnnonce(String annonce){ System.out.println(annonce); }
 
-    public void publierAnnonce(String annonce){
-        System.out.println(annonce);
-    }
+    public int getNbJeuPublie(){ return nbJeuPublie; }
 
-    public int getNbJeuPublie(){
-        return nbJeuPublie;
-    }
+    public static List<Jeu> getJeuxPublies() { return jeuxPublies;}
 }
 
