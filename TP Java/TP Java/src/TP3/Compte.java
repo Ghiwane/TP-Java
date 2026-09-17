@@ -6,7 +6,7 @@ public class Compte {
     private String dateDeCreation;
     private boolean actif;
     private int solde;
-    private boolean connected;
+    private boolean setConnected;
 
     public void Compte(){
         identifiant = "anonyme";
@@ -18,12 +18,20 @@ public class Compte {
         this.dateDeCreation = dateDeCreation;
         this.actif = true;
     }
+    public int getSolde(){ return solde;}
 
-    public void suprimer(){
-        actif = false;
-    }
+    public String getIdentifiant(){ return identifiant;}
 
-    public int getSolde(){
+    public String getDateDeCreation(){ return dateDeCreation;}
 
-    }
+    public boolean getActif(){ return actif;}
+
+    public boolean getConnected(){ return setConnected;}
+
+    public void setIdentifiant(String identifiant){ this.identifiant = identifiant;}
+
+    public void setDateDeCreation(String dateDeCreation){ this.dateDeCreation = dateDeCreation;}
+
+    public void suprimer(){actif = false;}
+
 }
