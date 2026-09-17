@@ -20,18 +20,17 @@ public class Dev extends Utilisateur {
     public void publierJeu(Jeu jeu)
     {
         jeuxPublies.add(jeu);
+        jeu.setIndex(nbJeuPublie);
         nbJeuPublie++;
     }
 
     public void publierAnnonce(String annonce){ System.out.println(annonce); }
-
     public int getNbJeuPublie(){ return nbJeuPublie; }
-
     public String getNomStudio(){ return nomStudio; }
-
     public String getSpecialite(){ return specialite; }
-
-    public static List<Jeu> getJeuxPublies() { return jeuxPublies;}
+    public static List<Jeu> getJeuxPublies() { return jeuxPublies; }
+    public static Jeu getJeu(int i) { return jeuxPublies.get(i); }
+    public static void removeJeuxPublies(int i) { jeuxPublies.remove(i); }
 
 
 }

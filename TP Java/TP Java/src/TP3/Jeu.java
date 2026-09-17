@@ -5,6 +5,7 @@ public class Jeu {
     double prix;
     private String genre;
     private boolean verif;
+    private int index;
 
     public void Jeu(String titre, double prix, String genre)
     {
@@ -12,6 +13,7 @@ public class Jeu {
         this.prix = prix;
         this.genre = genre;
         verif = false;
+        index = 0;
     }
 
     @Override
@@ -35,5 +37,9 @@ public class Jeu {
     public String getGenre()  {return genre; }
 
     public double getPrix() { return prix; }
+    public boolean getVerif() { return verif; }
+    public int getIndex() { return index; }
 
+    public void setVerif(boolean verif) { this.verif = verif; }
+    public void setIndex(int index) { this.index = index; }
 }
