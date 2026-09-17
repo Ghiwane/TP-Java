@@ -2,7 +2,7 @@ package TP3;
 
 public class Jeu {
     private String titre;
-    double prix;
+    private double prix;
     private String genre;
     private boolean verif;
     private int index;

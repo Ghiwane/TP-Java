@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Utilisateur {
     private String pseudo, email, mdp;
 
-    Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
     public Utilisateur() {
         this("null", "null", "null");
