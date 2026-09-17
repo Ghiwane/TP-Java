@@ -4,20 +4,18 @@ public class Jeu {
     private String titre;
     double prix;
     private String genre;
+    private boolean verif;
 
     public void Jeu(String titre, double prix, String genre)
     {
         this.titre = titre;
         this.prix = prix;
         this.genre = genre;
+        verif = false;
     }
 
-    public void affiche()
-    {
-        System.out.println("Titre : " + titre);
-        System.out.println("Prix : " + prix);
-        System.out.println("Genre : " + genre);
-    }
+    @Override
+    public String toString() { return "Titre : " + titre + "\nPrix : " + prix + "\nGenre : " + genre; }
 
     public void modifierPrix(double prix) { this.prix = prix; }
 

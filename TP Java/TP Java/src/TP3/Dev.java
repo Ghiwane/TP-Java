@@ -27,6 +27,12 @@ public class Dev extends Utilisateur {
 
     public int getNbJeuPublie(){ return nbJeuPublie; }
 
+    public String getNomStudio(){ return nomStudio; }
+
+    public String getSpecialite(){ return specialite; }
+
     public static List<Jeu> getJeuxPublies() { return jeuxPublies;}
+
+
 }
 
