@@ -1,6 +1,7 @@
 package TP3;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Dev extends Utilisateur {
     private String nomStudio;
@@ -21,6 +22,21 @@ public class Dev extends Utilisateur {
         jeu.setIndex(jeuxPublies.size());
         jeuxPublies.add(jeu);
         nbJeuPublie++;
+    }
+
+    public void rechercherJeu() {
+        String str;
+        do {
+            System.out.print("Saisir recherche : ");
+            str = scanner.nextLine();
+            if (Objects.equals(str, "")) System.out.println("Veuillez saisir une recherche.");
+        } while (Objects.equals(str, ""));
+        for (int i = 0; i < Dev.getJeuxPublies().size(); i++) {
+            Jeu j = Dev.getJeuxPublies().get(i);
+            if (j.getTitre().toLowerCase().contains(str.toLowerCase()) && (
+                    j.getAuteur().equals(this.nomStudio) || j.getVerif()))
+                System.out.println(j);
+        }
     }
 
     public void publierAnnonce(String annonce){ System.out.println(annonce); }

@@ -1,15 +1,16 @@
 package TP3;
 
 public class Jeu {
-    private String titre;
+    private String titre, auteur;
     private double prix;
     private String genre;
     private boolean verif;
     private int index;
 
-    public Jeu(String titre, double prix, String genre)
+    public Jeu(String titre, String auteur, double prix, String genre)
     {
         this.titre = titre;
+        this.auteur = auteur;
         this.prix = prix;
         this.genre = genre;
         verif = false;
@@ -17,7 +18,8 @@ public class Jeu {
     }
 
     @Override
-    public String toString() { return "Titre : " + titre + "\nPrix : " + prix + "\nGenre : " + genre; }
+    public String toString() { return "Titre : " + titre + "\nAuteur : " + auteur + "\nPrix : " + prix
+            + "\nGenre : " + genre; }
 
     public void modifierPrix(double prix) { this.prix = prix; }
 
@@ -32,10 +34,10 @@ public class Jeu {
             System.out.println("Le jeu n'est pas disponible");
         }
     }
+
     public String getTitre() { return titre; }
-
+    public String getAuteur() { return auteur; }
     public String getGenre()  {return genre; }
-
     public double getPrix() { return prix; }
     public boolean getVerif() { return verif; }
     public int getIndex() { return index; }

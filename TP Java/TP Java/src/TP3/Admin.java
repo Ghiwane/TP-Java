@@ -1,5 +1,7 @@
 package TP3;
 
+import java.util.Objects;
+
 public class Admin extends Utilisateur {
     private String niveauAcces, service;
     private int nombreComptesGeres;
@@ -94,6 +96,20 @@ public class Admin extends Utilisateur {
                 System.out.println("Jeu supprimé avec succès.");
             }
             else System.out.println("Jeu non supprimé.");
+        }
+    }
+
+    public void rechercherJeu() {
+        String str;
+        do {
+            System.out.print("Saisir recherche : ");
+            str = scanner.nextLine();
+            if (Objects.equals(str, "")) System.out.println("Veuillez saisir une recherche.");
+        } while (Objects.equals(str, ""));
+        for (int i = 0; i < Dev.getJeuxPublies().size(); i++) {
+            Jeu j = Dev.getJeuxPublies().get(i);
+            if (j.getTitre().toLowerCase().contains(str.toLowerCase()))
+                System.out.println(j);
         }
     }
 }

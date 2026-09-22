@@ -3,7 +3,7 @@ package TP3;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Utilisateur {
+public abstract class Utilisateur {
     private String pseudo, email, mdp;
 
     public static Scanner scanner = new Scanner(System.in);
@@ -48,19 +48,7 @@ public class Utilisateur {
         System.out.println("Vous êtes bien déconnecté du compte " + getPseudo() + ".");
     }
 
-    public void rechercherJeu() {
-        String str;
-        do {
-            System.out.print("Saisir recherche : ");
-            str = scanner.nextLine();
-            if (Objects.equals(str, "")) System.out.println("Veuillez saisir une recherche.");
-        } while (Objects.equals(str, ""));
-        for (int i = 0; i < Dev.getJeuxPublies().size(); i++) {
-            Jeu j = Dev.getJeuxPublies().get(i);
-            if (j.getVerif() && j.getTitre().toLowerCase().contains(str.toLowerCase()))
-                System.out.println(j);
-        }
-    }
+    public abstract void rechercherJeu();
 
 
 }
