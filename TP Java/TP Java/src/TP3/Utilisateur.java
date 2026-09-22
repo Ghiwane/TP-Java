@@ -3,7 +3,7 @@ package TP3;
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class Utilisateur {
+public abstract class Utilisateur implements IConnection {
     private String pseudo, email, mdp;
 
     public static Scanner scanner = new Scanner(System.in);
