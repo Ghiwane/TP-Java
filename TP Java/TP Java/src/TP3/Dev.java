@@ -17,8 +17,10 @@ public class Dev extends Utilisateur {
         this.nbJeuPublie = nbJeuPublie;
     }
 
-    public void publierJeu(Jeu jeu)
-    {
+    public void publierJeu(Jeu jeu) throws TitreDejaUtiliseException {
+        for (Jeu j : jeuxPublies)
+            if (j.getTitre().equalsIgnoreCase(jeu.getTitre()))
+                throw new TitreDejaUtiliseException(jeu.getTitre());
         jeu.setIndex(jeuxPublies.size());
         jeuxPublies.add(jeu);
         nbJeuPublie++;

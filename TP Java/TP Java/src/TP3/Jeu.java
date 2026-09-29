@@ -1,4 +1,5 @@
 package TP3;
+import java.util.Objects;
 
 public class Jeu {
     private String titre, auteur;
@@ -7,12 +8,13 @@ public class Jeu {
     private boolean verif;
     private int index;
 
-    public Jeu(String titre, String auteur, double prix, String genre)
-    {
-        this.titre = titre;
-        this.auteur = auteur;
+    public Jeu(String titre, String auteur, double prix, String genre) {
+        this.titre = Objects.requireNonNull(titre, "Le titre ne peut pas etre null");
+        this.auteur = Objects.requireNonNull(auteur, "L'auteur ne peut pas etre null");
+        this.genre = Objects.requireNonNull(genre, "Le genre ne peut pas etre null");
+        if (prix < 0)
+            throw new IllegalArgumentException("Le prix ne peut pas être negatif : " + prix);
         this.prix = prix;
-        this.genre = genre;
         verif = false;
         index = 0;
     }
@@ -21,7 +23,11 @@ public class Jeu {
     public String toString() { return "Titre : " + titre + "\nAuteur : " + auteur + "\nPrix : " + prix
             + "\nGenre : " + genre; }
 
-    public void modifierPrix(double prix) { this.prix = prix; }
+    public void modifierPrix(double prix) {
+        if (prix < 0)
+            throw new IllegalArgumentException("Le prix ne peut pas être negatif : " + prix);
+        this.prix = prix;
+    }
 
     public void estDisponible(boolean disponible)
     {

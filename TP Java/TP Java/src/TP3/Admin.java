@@ -62,11 +62,10 @@ public class Admin extends Utilisateur {
         } else System.out.println("Annulation de la restitution.");
     }
 
-    public void accepterJeu(Jeu jeu) {
+    public void accepterJeu(Jeu jeu) throws JeuDejaVerifieException {
         char conf;
         if (jeu.getVerif()) {
-            System.out.println("Le jeu " + jeu.getTitre() + " est déjà vérifié.");
-            return;
+            throw new JeuDejaVerifieException(jeu.getTitre());
         }
         do {
             System.out.println(jeu.toString());
