@@ -23,8 +23,12 @@ public class Main {
         // Jeux de base pour faciliter les tests
         Jeu jeu1 = new Jeu("Cyber Run", "Microsoft", 14.99, "Action");
         Jeu jeu2 = new Jeu("Fantasy Quest", "PixelForge", 29.99, "RPG");
-        dev.publierJeu(jeu1);
-        dev.publierJeu(jeu2);
+        try {
+            dev.publierJeu(jeu1);
+            dev.publierJeu(jeu2);
+        } catch (TitreDejaUtiliseException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
 
         Mode modeActuel = Mode.DEVELOPPEUR;
         boolean continuer = true;
@@ -118,9 +122,13 @@ public class Main {
                             System.out.println("Prix invalide, défini à 0.0 par défaut.");
                         }
 
-                        Jeu nouveauJeu = new Jeu(titre, dev.getNomStudio(), prix, genre);
-                        dev.publierJeu(nouveauJeu);
-                        System.out.println("Le jeu '" + titre + "' a été soumis pour publication avec succès !");
+                        try {
+                            Jeu nouveauJeu = new Jeu(titre, dev.getNomStudio(), prix, genre);
+                            dev.publierJeu(nouveauJeu);
+                            System.out.println("Le jeu '" + titre + "' a été soumis pour publication avec succès !");
+                        } catch (IllegalArgumentException | NullPointerException | TitreDejaUtiliseException e) {
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
                     } else {
                         // Examiner un jeu
                         if (Dev.getJeuxPublies().isEmpty()) {
@@ -135,7 +143,11 @@ public class Main {
                             try {
                                 int index = Integer.parseInt(scanner.nextLine().trim());
                                 if (index >= 0 && index < Dev.getJeuxPublies().size()) {
-                                    admin.accepterJeu(Dev.getJeuxPublies().get(index));
+                                    try {
+                                        admin.accepterJeu(Dev.getJeuxPublies().get(index));
+                                    } catch (JeuDejaVerifieException e) {
+                                        System.out.println("Erreur : " + e.getMessage());
+                                    }
                                 } else {
                                     System.out.println("Index introuvable.");
                                 }
