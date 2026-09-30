@@ -126,7 +126,7 @@ public class Main {
                             Jeu nouveauJeu = new Jeu(titre, dev.getNomStudio(), prix, genre);
                             dev.publierJeu(nouveauJeu);
                             System.out.println("Le jeu '" + titre + "' a été soumis pour publication avec succès !");
-                        } catch (IllegalArgumentException | NullPointerException | TitreDejaUtiliseException e) {
+                        } catch (IllegalArgumentException | TitreDejaUtiliseException e) {
                             System.out.println("Erreur : " + e.getMessage());
                         }
                     } else {

@@ -9,9 +9,9 @@ public class Jeu {
     private int index;
 
     public Jeu(String titre, String auteur, double prix, String genre) {
-        this.titre = Objects.requireNonNull(titre, "Le titre ne peut pas etre null");
-        this.auteur = Objects.requireNonNull(auteur, "L'auteur ne peut pas etre null");
-        this.genre = Objects.requireNonNull(genre, "Le genre ne peut pas etre null");
+        this.titre = titre;
+        this.auteur = auteur;
+        this.genre = genre;
         if (prix < 0)
             throw new IllegalArgumentException("Le prix ne peut pas être negatif : " + prix);
         this.prix = prix;
