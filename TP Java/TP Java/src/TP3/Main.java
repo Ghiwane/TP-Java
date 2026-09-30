@@ -1,5 +1,6 @@
 package TP3;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
         ADMINISTRATEUR
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = Utilisateur.scanner;
 
         // --- Instanciation des profils et comptes initiaux ---
@@ -61,6 +62,8 @@ public class Main {
                 System.out.println("6. Restituer un compte");
                 System.out.println("7. Rechercher un jeu dans tout le catalogue");
                 System.out.println("8. Lister tous les jeux enregistrés");
+                System.out.println("9. Serialiser et sauvegarder la liste des jeux");
+                System.out.println("10. Sauvegarder les jeux dans un fichier .txt");
             }
             System.out.println("0. Quitter l'application");
             System.out.print("Votre choix : ");
@@ -206,6 +209,25 @@ public class Main {
                                 System.out.println(j);
                                 System.out.println("Vérifié : " + j.getVerif());
                             }
+                        }
+                    } else {
+                        System.out.println("Option inexistante.");
+                    }
+                    break;
+
+                case 9:
+                    if (modeActuel == Mode.ADMINISTRATEUR) {
+                        if (Dev.getJeuxPublies().isEmpty()) System.out.println("Le catalogue est vide.");
+                        else Admin.serialiserListJeu(Dev.getJeuxPublies());
+                    } else System.out.println("Option inexistante.");
+                    break;
+
+                case 10:
+                    if (modeActuel == Mode.ADMINISTRATEUR) {
+                        if (Dev.getJeuxPublies().isEmpty()) {
+                            System.out.println("Le catalogue est vide.");
+                        } else {
+                            Admin.sauvegarderListJeu();
                         }
                     } else {
                         System.out.println("Option inexistante.");

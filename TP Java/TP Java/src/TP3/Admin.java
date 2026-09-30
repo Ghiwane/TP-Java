@@ -1,5 +1,7 @@
 package TP3;
 
+import java.io.*;
+import java.util.List;
 import java.util.Objects;
 
 public class Admin extends Utilisateur {
@@ -109,6 +111,40 @@ public class Admin extends Utilisateur {
             Jeu j = Dev.getJeuxPublies().get(i);
             if (j.getTitre().toLowerCase().contains(str.toLowerCase()))
                 System.out.println(j);
+        }
+    }
+
+    public static void sauvegarderListJeu() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("jp.txt"));
+            List<Jeu> jp = Dev.getJeuxPublies();
+            int len = jp.size();
+
+            for (int i = 0; i < len; i++) {
+                System.out.println("(" + i + "/" + len + ") Sauvegarde de " + jp.get(i).getTitre() + "...");
+                writer.write(i + ";");
+                writer.write(jp.get(i).getTitre() + ";");
+                writer.write(jp.get(i).getAuteur() + ";");
+                writer.write(jp.get(i).getGenre() + ";");
+                writer.write(jp.get(i).getPrix() + ";");
+                writer.write(jp.get(i).getVerif() + ";\n");
+            }
+            System.out.println("Sauvegarde terminée (" + len + " jeux)");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void serialiserListJeu(List<Jeu> jp) throws FileNotFoundException, IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("jp.ser"))) {
+            oos.writeObject(jp);
+        } catch (FileNotFoundException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        } finally {
+            System.out.println("Fin de la sauvegarde.");
         }
     }
 }

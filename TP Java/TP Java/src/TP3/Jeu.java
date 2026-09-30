@@ -1,7 +1,9 @@
 package TP3;
 import java.util.Objects;
 
-public class Jeu {
+import java.io.Serializable;
+
+public class Jeu implements Serializable {
     private String titre, auteur;
     private double prix;
     private String genre;
