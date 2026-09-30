@@ -50,7 +50,7 @@ public class Dev extends Utilisateur {
     public static List<Jeu> getJeuxPublies() { return jeuxPublies; }
     public static Jeu getJeu(int i) { return jeuxPublies.get(i); }
     public static void removeJeuxPublies(int i) { jeuxPublies.remove(i); }
-
+    public static void setJeuxPublies(List<Jeu> jp){jeuxPublies=jp;}
 
 }
 

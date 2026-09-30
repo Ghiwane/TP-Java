@@ -1,8 +1,10 @@
 package TP3;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Admin extends Utilisateur {
     private String niveauAcces, service;
@@ -146,5 +148,57 @@ public class Admin extends Utilisateur {
         } finally {
             System.out.println("Fin de la sauvegarde.");
         }
+    }
+
+    public static List<Jeu> lireFichierJeu(String nomdufichier) {
+        List<Jeu> jeuLue = new ArrayList<>();
+
+        try (Scanner sc = new Scanner(new File(nomdufichier))) {
+            while (sc.hasNextLine()) {
+                String ligne = sc.nextLine().trim();
+                if (ligne.isEmpty()) continue;
+
+                // split(";") ignore les champs vides à la fin, donc 6 éléments ici
+                String[] champs = ligne.split(";");
+
+                if (champs.length < 6) {
+                    System.out.println("Ligne ignorée (format invalide) : " + ligne);
+                    continue;
+                }
+
+                try {
+                    // champs[0] = index (inutile pour reconstruire l'objet)
+                    String titre  = champs[1];
+                    String auteur = champs[2];
+                    String genre  = champs[3];
+                    double prix   = Double.parseDouble(champs[4]);
+                    boolean verif = Boolean.parseBoolean(champs[5]);
+
+                    // À adapter selon le constructeur de ta classe Jeu
+                    jeuLue.add(new Jeu(titre, auteur, prix, genre, verif));
+                } catch (NumberFormatException e) {
+                    System.out.println("Ligne ignorée (prix invalide) : " + ligne);
+                }
+            }
+            System.out.println("Lecture terminée (" + jeuLue.size() + " jeux)");
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier introuvable : " + e.getMessage());
+        }
+
+        return jeuLue;
+    }
+    public static List<Jeu> deserialiserListJeu(String nomdufichier) {
+        List<Jeu> jp = new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomdufichier))) {
+            jp = (List<Jeu>) ois.readObject();
+            System.out.println("Désérialisation terminée (" + jp.size() + " jeux)");
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier introuvable : " + e.getMessage());
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+
+        return jp;
     }
 }

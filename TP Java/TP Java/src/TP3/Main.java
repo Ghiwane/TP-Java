@@ -64,6 +64,7 @@ public class Main {
                 System.out.println("8. Lister tous les jeux enregistrés");
                 System.out.println("9. Serialiser et sauvegarder la liste des jeux");
                 System.out.println("10. Sauvegarder les jeux dans un fichier .txt");
+                System.out.println("11. Lire le fichier .txt");
             }
             System.out.println("0. Quitter l'application");
             System.out.print("Votre choix : ");
@@ -231,6 +232,17 @@ public class Main {
                         }
                     } else {
                         System.out.println("Option inexistante.");
+                    }
+                    break;
+
+                case 11:
+                    if(modeActuel == Mode.ADMINISTRATEUR) {
+                        Dev.setJeuxPublies(Admin.lireFichierJeu("jp.txt"));
+                    }
+                    break;
+                case 12:
+                    if(modeActuel == Mode.ADMINISTRATEUR){
+                        Dev.setJeuxPublies(Admin.deserialiserListJeu("jp.ser"));
                     }
                     break;
 

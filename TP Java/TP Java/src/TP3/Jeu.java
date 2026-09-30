@@ -20,6 +20,16 @@ public class Jeu implements Serializable {
         verif = false;
         index = 0;
     }
+    public Jeu(String titre, String auteur, double prix, String genre, boolean verif) {
+        this.titre = titre;
+        this.auteur = auteur;
+        this.genre = genre;
+        if (prix < 0)
+            throw new IllegalArgumentException("Le prix ne peut pas être negatif : " + prix);
+        this.prix = prix;
+        this.verif = verif;
+        index = 0;
+    }
 
     @Override
     public String toString() { return "Titre : " + titre + "\nAuteur : " + auteur + "\nPrix : " + prix
