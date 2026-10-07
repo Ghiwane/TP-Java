@@ -1,3 +1,3 @@
 0; Cyber Run;Microsoft;Action;14.99;false;
 1; Fantasy Quest;PixelForge;RPG;29.99;false;
-2;Forza;Parz;Course;79.99;true;
+2;Jeu;Auteur;Genre;10.00;true;
