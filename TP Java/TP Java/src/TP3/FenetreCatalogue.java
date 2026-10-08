@@ -3,6 +3,11 @@ package TP3;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,9 +58,15 @@ public class FenetreCatalogue extends JFrame {
             JButton boutonValider = new JButton("Valider le jeu");
             JButton boutonSupprimer = new JButton("Supprimer le jeu");
             boutonValider.addActionListener(e -> validerJeu());
+            JButton boutonSerialiser = new JButton("Sérialiser");
+            JButton boutonDeserialiser = new JButton("Désérialiser");
             boutonSupprimer.addActionListener(e -> supprimerJeu());
+            boutonSerialiser.addActionListener(e -> serialiser());
+            boutonDeserialiser.addActionListener(e -> deserialiser());
             bas.add(boutonValider);
             bas.add(boutonSupprimer);
+            bas.add(boutonSerialiser);
+            bas.add(boutonDeserialiser);
         }
 
         // --- Assemblage ---
@@ -153,6 +164,47 @@ public class FenetreCatalogue extends JFrame {
             Dev.getJeuxPublies().get(i).setIndex(i);
         }
         rafraichir();
+    }
+
+    /** Sérialise la liste des jeux dans jp.ser (le même fichier que Admin.serialiserListJeu). */
+    private void serialiser() {
+        if (Dev.getJeuxPublies().isEmpty()) {
+            erreur("Le catalogue est vide.");
+            return;
+        }
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("jp.ser"))) {
+            oos.writeObject(Dev.getJeuxPublies());
+            JOptionPane.showMessageDialog(this,
+                    Dev.getJeuxPublies().size() + " jeu(x) sérialisé(s) dans jp.ser.",
+                    "Sérialisation", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            erreur("Échec de la sérialisation : " + e.getMessage());
+        }
+    }
+
+    /** Désérialise jp.ser, remplace le catalogue puis met à jour le tableau. */
+    @SuppressWarnings("unchecked")
+    private void deserialiser() {
+        int rep = JOptionPane.showConfirmDialog(this,
+                "Remplacer le catalogue actuel par le contenu de jp.ser ?",
+                "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (rep != JOptionPane.YES_OPTION) return;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jp.ser"))) {
+            List<Jeu> jeux = (List<Jeu>) ois.readObject();
+            Dev.setJeuxPublies(jeux);
+            for (int i = 0; i < jeux.size(); i++) {
+                jeux.get(i).setIndex(i);
+            }
+            rafraichir();
+            JOptionPane.showMessageDialog(this,
+                    jeux.size() + " jeu(x) désérialisé(s).",
+                    "Désérialisation", JOptionPane.INFORMATION_MESSAGE);
+        } catch (java.io.FileNotFoundException e) {
+            erreur("Fichier jp.ser introuvable : sérialisez d'abord le catalogue.");
+        } catch (IOException | ClassNotFoundException | ClassCastException e) {
+            erreur("Échec de la désérialisation : " + e.getMessage());
+        }
     }
 
     /** Retourne le jeu de la ligne sélectionnée, ou null (avec message) si aucune ligne n'est choisie. */
