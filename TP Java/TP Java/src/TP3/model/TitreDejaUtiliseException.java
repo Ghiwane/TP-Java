@@ -1,4 +1,4 @@
-package TP3;
+package TP3.model;
 
 public class TitreDejaUtiliseException extends Exception {
     public TitreDejaUtiliseException(String titre) {

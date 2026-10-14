@@ -1,4 +1,4 @@
-package TP3;
+package TP3.model;
 
 public class JeuDejaVerifieException extends Exception {
     public JeuDejaVerifieException(String titre) {

@@ -1,5 +1,4 @@
-package TP3;
-import java.util.Objects;
+package TP3.model;
 
 import java.io.Serializable;
 
@@ -20,6 +19,7 @@ public class Jeu implements Serializable {
         verif = false;
         index = 0;
     }
+
     public Jeu(String titre, String auteur, double prix, String genre, boolean verif) {
         this.titre = titre;
         this.auteur = auteur;
@@ -32,8 +32,9 @@ public class Jeu implements Serializable {
     }
 
     @Override
-    public String toString() { return "Titre : " + titre + "\nAuteur : " + auteur + "\nPrix : " + prix
-            + "\nGenre : " + genre; }
+    public String toString() {
+        return "Titre : " + titre + "\nAuteur : " + auteur + "\nPrix : " + prix + "\nGenre : " + genre;
+    }
 
     public void modifierPrix(double prix) {
         if (prix < 0)
@@ -41,21 +42,11 @@ public class Jeu implements Serializable {
         this.prix = prix;
     }
 
-    public void estDisponible(boolean disponible)
-    {
-        if (disponible)
-        {
-            System.out.println("Le jeu est disponible");
-        }
-        else
-        {
-            System.out.println("Le jeu n'est pas disponible");
-        }
-    }
+    public boolean estDisponible(boolean disponible) { return disponible; } // plus d'affichage console
 
     public String getTitre() { return titre; }
     public String getAuteur() { return auteur; }
-    public String getGenre()  {return genre; }
+    public String getGenre() { return genre; }
     public double getPrix() { return prix; }
     public boolean getVerif() { return verif; }
     public int getIndex() { return index; }
